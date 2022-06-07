@@ -1,11 +1,9 @@
-
 let initialNumbers = {
 	days: 100,
 	hours: 60,
 	minutes: 60,
 	seconds: 60,
 };
-
 
 function timeBreakdown(timeBetween) {
 	const total_hours = Math.floor(timeBetween / 3600);
@@ -68,7 +66,6 @@ function resetCards(endTime) {
 		for (let i = 0; i < units.length; i++) {
 			if (initialNumbers[units[i]] > openingValues[units[i]]) {
 				updateFlip(units[i], --initialNumbers[units[i]], true);
-				//break;
 			}
 		}
 	}, 20);
@@ -128,8 +125,8 @@ function flipCard(card, newNumber, fast = 0) {
 }
 
 function triggerCountdown(endTime) {
-    resetCards(endTime)
-    setTimeout(() => startCountdown(endTime), 1000);
+	resetCards(endTime);
+	setTimeout(() => startCountdown(endTime), 1000);
 }
 
-triggerCountdown('2022-06-30T09:35:41.000Z')
+triggerCountdown('2022-06-30T09:35:41.000Z');
