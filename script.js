@@ -1,4 +1,3 @@
-const endTime = '2022-04-030T09:35:41.000Z';
 
 let initialNumbers = {
 	days: 100,
@@ -6,6 +5,7 @@ let initialNumbers = {
 	minutes: 60,
 	seconds: 60,
 };
+
 
 function timeBreakdown(timeBetween) {
 	const total_hours = Math.floor(timeBetween / 3600);
@@ -29,7 +29,7 @@ function calculateCounterVals(timeStr) {
 	return timeBreakdown(calculateTimeDiff(countToDate, currentDate));
 }
 
-function startCountdown() {
+function startCountdown(endTime) {
 	const countToDate = new Date(endTime);
 	let prevTimeBetweenDates;
 	setInterval(() => {
@@ -61,7 +61,7 @@ function flipCards(timeBetween) {
 
 const units = ['seconds', 'minutes', 'hours', 'days'];
 
-function resetCards() {
+function resetCards(endTime) {
 	const openingValues = calculateCounterVals(endTime);
 	setCardsNumbers(initialNumbers);
 	const resetTimer = setInterval(() => {
@@ -72,8 +72,6 @@ function resetCards() {
 			}
 		}
 	}, 20);
-
-	setTimeout(() => startCountdown(), 1000);
 }
 
 function formatCardNumber(num) {
@@ -129,4 +127,9 @@ function flipCard(card, newNumber, fast = 0) {
 	card.append(topFlip, bottomFlip);
 }
 
-resetCards();
+function triggerCountdown(endTime) {
+    resetCards(endTime)
+    setTimeout(() => startCountdown(endTime), 1000);
+}
+
+triggerCountdown('2022-06-30T09:35:41.000Z')
