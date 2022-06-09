@@ -141,4 +141,4 @@ function triggerCountdown(endTime) {
 	setTimeout(() => startCountdown(endTime), 1000);
 }
 
-triggerCountdown('2022-06-30T09:35:41.000Z');
+triggerCountdown(new Date().setMonth(new Date().getMonth()+1)); //can also be a string: '2022-06-30T09:35:41.000Z';
