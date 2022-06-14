@@ -124,21 +124,24 @@ function flipCard(card, newNumber, fast = 0) {
 	card.append(topFlip, bottomFlip);
 }
 
-
 function validateEndTime(endTime) {
-	const daysDiff = calculateTimeDiff(new Date(endTime), 'now') / 3600 / 24
-	
+	const daysDiff = calculateTimeDiff(new Date(endTime), 'now') / 3600 / 24;
+
 	if (daysDiff >= 0 && daysDiff < 100) return true;
-		
+
 	if (daysDiff < 0) throw Error('End time must be in the future.');
 	else throw Error('End time must be less than 100 days in the future.');
 }
 
 function triggerCountdown(endTime) {
-    if (!validateEndTime(endTime)) return;
+	if (!validateEndTime(endTime)) return;
 
 	resetCards(endTime);
 	setTimeout(() => startCountdown(endTime), 1000);
 }
 
-triggerCountdown(new Date().setMonth(new Date().getMonth()+1)); //can also be a string: '2022-06-30T09:35:41.000Z';
+if (typeof endTimeValue === 'undefined') {
+	var endTimeValue = new Date().setMonth(new Date().getMonth() + 1); //can also be a string: '2022-06-30T09:35:41.000Z';
+}
+
+triggerCountdown(endTimeValue);
