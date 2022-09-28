@@ -1,8 +1,8 @@
 let initialNumbers = {
-	days: 100,
+	days: 99,
 	hours: 60,
-	minutes: 60,
-	seconds: 60,
+	minutes: 80,
+	seconds: 80,
 };
 
 function timeBreakdown(timeBetween) {
